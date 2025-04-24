@@ -1,8 +1,8 @@
 /* Variáveis para uma paleta de cores e tipografia consistentes */
 :root {
-    --primary-color: #3498db;
-    --primary-dark: #2980b9;
-    --secondary-color: #2c3e50;
+    --primary-color: #282955;
+    --primary-dark: #32335c;
+    --secondary-color: #282955;
     --light-bg: #f9fafb;
     --gray-bg: #f3f4f6;
     --border-color: #d1d5db;
