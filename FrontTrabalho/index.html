@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Derivação de Gramática</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Derivação de Gramática</h1>
+    <p class="tagline">Visualize o caminho das derivações com clareza e elegância</p>
+  </header>
+
+  <main>
+    <section class="input-section">
+      <h2>Insira sua Gramática</h2>
+      <p>Digite a gramática abaixo. Cada regra deve estar em uma nova linha e use o símbolo <strong>ε</strong> para representar a cadeia vazia.</p>
+      <form id="grammarForm" onsubmit="return false;">
+        <label for="gramatica">Gramática:</label>
+        <textarea id="gramatica" rows="6">S = 0A|1S|2S
+A = 0A|1S|2S|ε</textarea>
+        <button type="button" onclick="derivar()">Derivar</button>
+      </form>
+    </section>
+
+    <section class="result-section" id="resultado" style="display: none;">
+      <h2>Resultado da Derivação</h2>
+      <div class="sentence-box">
+        <strong>Sentença Final:</strong>
+        <p id="sentencaFinal"></p>
+      </div>
+      <h3>Passos:</h3>
+      <div class="table-wrapper">
+        <table class="derivacao" id="passosTabela">
+          <thead>
+            <tr>
+              <th>Passo</th>
+              <th>Derivação</th>
+            </tr>
+          </thead>
+          <tbody id="passosLista">
+            <!-- As linhas serão inseridas dinamicamente pelo JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Derivação de Gramática. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

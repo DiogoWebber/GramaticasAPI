@@ -1,0 +1,174 @@
+/* Variáveis para uma paleta de cores e tipografia consistentes */
+:root {
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --secondary-color: #2c3e50;
+    --light-bg: #f9fafb;
+    --gray-bg: #f3f4f6;
+    --border-color: #d1d5db;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Reset básico */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    font-family: var(--font-family);
+    background: var(--gray-bg);
+    color: var(--secondary-color);
+    line-height: 1.6;
+  }
+  
+  /* Header com apelo visual e responsivo */
+  header {
+    background: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+    margin-bottom: 30px;
+  }
+  header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+  }
+  header .tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+  
+  /* Container geral */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Seção de input */
+  .input-section {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  .input-section h2 {
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+  }
+  .input-section p {
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 1rem;
+  }
+  .input-section label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .input-section textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    resize: vertical;
+    font-size: 1rem;
+    color: var(--secondary-color);
+  }
+  .input-section button {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  .input-section button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+  }
+  
+  /* Seção de resultado */
+  .result-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+  .sentence-box {
+    background: var(--light-bg);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  .sentence-box p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+  }
+  
+  /* Tabela de derivação com animação suave para os hover */
+  .table-wrapper {
+    overflow-x: auto;
+  }
+  table.derivacao {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  table.derivacao th,
+  table.derivacao td {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+    font-size: 0.95rem;
+  }
+  table.derivacao th {
+    background: #f0f4f8;
+    color: var(--secondary-color);
+    font-weight: bold;
+  }
+  table.derivacao tbody tr {
+    transition: background 0.3s ease;
+  }
+  table.derivacao tbody tr:nth-child(odd) {
+    background: #fff;
+  }
+  table.derivacao tbody tr:nth-child(even) {
+    background: var(--light-bg);
+  }
+  table.derivacao tbody tr:hover {
+    background: #e2e8f0;
+  }
+  
+  /* Footer com design simples e refinado */
+  footer {
+    text-align: center;
+    padding: 15px;
+    background: var(--secondary-color);
+    color: #fff;
+    font-size: 0.9rem;
+    margin-top: 30px;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    .input-section button {
+      padding: 12px;
+      font-size: 0.9rem;
+    }
+    .input-section textarea {
+      font-size: 0.9rem;
+    }
+  }
+  
