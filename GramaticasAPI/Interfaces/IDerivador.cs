@@ -5,5 +5,5 @@ namespace GramaticasAPI.Interfaces;
 
 public interface IDerivador
 {
-     GenericResponse<DerivacaoResultado> Derivar(GramaticaDTO gramatica);
+    GenericResponse<DerivacaoResultado> Derivar(GramaticaDTO gramatica);
 }

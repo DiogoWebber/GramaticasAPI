@@ -1,32 +1,42 @@
 using GramaticasAPI.Interfaces;
 using GramaticasAPI.Models;
-using GramaticasAPI.Response;
+using GramaticasAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GramaticasAPI.Controllers
+namespace GramaticasAPI.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class GramaticasController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class GramaticasController : ControllerBase
+    private readonly IDerivador _derivador;
+
+    public GramaticasController(IDerivador derivador)
     {
-        private readonly IDerivador _derivador;
+        _derivador = derivador;
+    }
 
-        public GramaticasController(IDerivador derivador)
+    [HttpPost("derivar")]
+    public IActionResult DerivarSentenca([FromBody] GramaticaDTO gramatica)
+    {
+        var resultado = _derivador.Derivar(gramatica);
+
+        if (!resultado.Sucesso) return BadRequest(resultado);
+
+        return Ok(resultado);
+    }
+
+    [HttpPost("derivar-simples")]
+    public IActionResult DerivarSimples([FromBody] string entradaSimples)
+    {
+        try
         {
-            _derivador = derivador;
+            var gramatica = DerivadorService.GramaticaParser.Parse(entradaSimples);
+            return DerivarSentenca(gramatica);
         }
-
-        [HttpPost("derivar")]
-        public IActionResult DerivarSentenca([FromBody] GramaticaDTO gramatica)
+        catch (Exception ex)
         {
-            var resultado = _derivador.Derivar(gramatica);
-
-            if (!resultado.Sucesso)
-            {
-                return BadRequest(resultado);
-            }
-
-            return Ok(resultado);
+            return BadRequest(new { erro = "Erro ao processar entrada simples", detalhes = ex.Message });
         }
     }
 }
