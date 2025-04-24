@@ -65,17 +65,15 @@ public class DerivadorService : IDerivador
                                 { $"Produção vazia encontrada para o não-terminal '{regra.NaoTerminal}'." },
                             "Erro de validação"
                         );
-                    if (producao == "ε")
-                    {
-                        continue;
-                    }
+                    if (producao == "ε") continue;
                     if (producao.Length == 1)
                     {
-                        if (!gramatica.T.Contains(producao))
+                        var simbolo = producao;
+                        if (!gramatica.T.Contains(simbolo) && !gramatica.N.Contains(simbolo))
                             return GenericResponse<DerivacaoResultado>.ErroResponse(
                                 new List<string>
                                 {
-                                    $"Na produção de '{regra.NaoTerminal}', o símbolo '{producao}' deve ser terminal."
+                                    $"Na produção de '{regra.NaoTerminal}', o símbolo '{producao}' deve ser terminal ou não-terminal válido."
                                 },
                                 "Erro de validação"
                             );
@@ -149,7 +147,17 @@ public class DerivadorService : IDerivador
                 {
                     if (producaoEscolhida.Length == 1)
                     {
-                        resultado += producaoEscolhida; // Adiciona o terminal ao resultado
+                        var simbolo = producaoEscolhida[0];
+                        if (gramatica.T.Contains(simbolo.ToString()))
+                            resultado += simbolo;
+                        else if (gramatica.N.Contains(simbolo.ToString()))
+                            pilha.Push(simbolo); // é um não-terminal, empilha para expandir
+                        else
+                            return GenericResponse<DerivacaoResultado>.ErroResponse(
+                                new List<string>
+                                    { $"Símbolo '{simbolo}' não reconhecido como terminal ou não-terminal." },
+                                "Erro na derivação"
+                            );
                     }
                     else
                     {
@@ -159,7 +167,6 @@ public class DerivadorService : IDerivador
                         resultado += parteTerminal; // Adiciona os terminais ao resultado
                         pilha.Push(novoNaoTerminal); // Empilha o não-terminal para expansão futura
                     }
-                    
                 }
 
                 // Adiciona o estado atual à lista de passos
